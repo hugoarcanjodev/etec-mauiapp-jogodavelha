@@ -1,45 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppJogoDaVelha.MainPage">
+             x:Class="MauiAppJogoDaVelha.MainPage"
+             BackgroundColor="#0F172A">
+    <!-- Fundo escuro elegante fora da moldura -->
 
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-            <GradientStop Color="Purple" Offset="0.3" />
-            <GradientStop Color="Red" Offset="1.1" />
-        </LinearGradientBrush>
-    </ContentPage.Background>
-
+    <!-- Estilos globais dos botões do tabuleiro -->
     <ContentPage.Resources>
         <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="CornerRadius" Value="15" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontSize" Value="80" />
-            <Setter Property="BorderWidth" Value="1" />
-            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#1E293B" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="TextColor" Value="#38BDF8" />
+            <Setter Property="FontSize" Value="60" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="BorderWidth" Value="2" />
+            <Setter Property="BorderColor" Value="#334155" />
+            <Setter Property="Shadow">
+                <Shadow Brush="#000000" Offset="0,4" Radius="8" Opacity="0.4"/>
+            </Setter>
         </Style>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="*, *, *, *" 
-          ColumnDefinitions="*, *, *"
-          ColumnSpacing="10" RowSpacing="10" Margin="10">
+    <!-- Centraliza tudo simulando a tela de um celular no computador -->
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
-               Text="Jogo da Velha" />
+        <!-- Moldura simulando a carcaça de um smartphone -->
+        <Border Stroke="#334155"
+                StrokeThickness="4"
+                StrokeShape="RoundRectangle 30"
+                BackgroundColor="#090D16"
+                WidthRequest="380"
+                HeightRequest="650"
+                Padding="20"
+                HorizontalOptions="Center">
 
-        <Button x:Name="btn10" Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked" />
-        <Button x:Name="btn11" Grid.Row="1" Grid.Column="1" Clicked="Button_Clicked" />
-        <Button x:Name="btn12" Grid.Row="1" Grid.Column="2" Clicked="Button_Clicked" />
+            <VerticalStackLayout Spacing="15" VerticalOptions="CenterAndExpand">
 
-        <Button x:Name="btn20" Grid.Row="2" Grid.Column="0" Clicked="Button_Clicked" />
-        <Button x:Name="btn21" Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked" />
-        <Button x:Name="btn22" Grid.Row="2" Grid.Column="2" Clicked="Button_Clicked" />
+                <!-- Título do Jogo Centralizado -->
+                <Label Text="🎮 JOGO DA VELHA" 
+                       TextColor="#F8FAFC"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       Margin="0, 10, 0, 5" />
 
-        <Button x:Name="btn30" Grid.Row="3" Grid.Column="0" Clicked="Button_Clicked" />
-        <Button x:Name="btn31" Grid.Row="3" Grid.Column="1" Clicked="Button_Clicked" />
-        <Button x:Name="btn32" Grid.Row="3" Grid.Column="2" Clicked="Button_Clicked" />
+                <!-- Subtítulo / Status -->
+                <Label Text="Modo Clássico" 
+                       TextColor="#64748B"
+                       FontSize="14"
+                       HorizontalOptions="Center"
+                       Margin="0, 0, 0, 15" />
 
-    </Grid>
+                <!-- Grade do Jogo (Tabuleiro 3x3) -->
+                <Grid RowDefinitions="100, 100, 100" 
+                      ColumnDefinitions="100, 100, 100"
+                      ColumnSpacing="12" RowSpacing="12" 
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center">
+
+                    <Button x:Name="btn10" Grid.Row="0" Grid.Column="0" Clicked="Button_Clicked" />
+                    <Button x:Name="btn11" Grid.Row="0" Grid.Column="1" Clicked="Button_Clicked" />
+                    <Button x:Name="btn12" Grid.Row="0" Grid.Column="2" Clicked="Button_Clicked" />
+
+                    <Button x:Name="btn20" Grid.Row="1" Grid.Column="0" Clicked="Button_Clicked" />
+                    <Button x:Name="btn21" Grid.Row="1" Grid.Column="1" Clicked="Button_Clicked" />
+                    <Button x:Name="btn22" Grid.Row="1" Grid.Column="2" Clicked="Button_Clicked" />
+
+                    <Button x:Name="btn30" Grid.Row="2" Grid.Column="0" Clicked="Button_Clicked" />
+                    <Button x:Name="btn31" Grid.Row="2" Grid.Column="1" Clicked="Button_Clicked" />
+                    <Button x:Name="btn32" Grid.Row="2" Grid.Column="2" Clicked="Button_Clicked" />
+
+                </Grid>
+
+            </VerticalStackLayout>
+        </Border>
+
+    </VerticalStackLayout>
 
 </ContentPage>
